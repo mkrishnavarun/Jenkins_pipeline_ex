@@ -1,18 +1,12 @@
+/* JenkinsFile Declarative Pipeline 
+Requires the Docker Pipeline plugin */
 pipeline {
-    agent any
-
+    agent { docker { image 'golang:1.19.1-alpine' } }
     stages {
-        stage('Hello') {
+        stage('build') {
             steps {
-                echo 'Hello World'
+                sh 'go version'
             }
         }
-    
-        stage('Build') {
-            steps {
-                echo 'Build'
-            }
-        }
-    
-			}
-		}
+    }
+}
